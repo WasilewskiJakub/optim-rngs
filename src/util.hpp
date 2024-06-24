@@ -12,12 +12,13 @@
 #include "const.hpp"
 
 template <typename RandomGenerator>
-auto vanila_cmaes_factory(const auto &input, auto &&eval_func,
+auto vanila_cmaes_factory(const auto &input, auto &&eval_func, const int seed,
                           auto &&logger_func) {
   using namespace libcmaes;
   const auto sigma = 1.0;
   auto params = CMAParameters<>{input, sigma};
-  params.set_max_iter(1000 * input.size());
+  params.set_seed(seed);
+  params.set_max_iter(100 * input.size());
 
   params.set_stopping_criteria(STAGNATION, false);
   params.set_stopping_criteria(TOLX, false);
