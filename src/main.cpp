@@ -1,9 +1,22 @@
+#include <boost/random.hpp>
+#include <boost/random/additive_combine.hpp>
+#include <boost/random/inversive_congruential.hpp>
+#include <boost/random/lagged_fibonacci.hpp>
+#include <boost/random/linear_congruential.hpp>
+#include <boost/random/mersenne_twister.hpp>
+#include <boost/random/ranlux.hpp>
+#include <boost/random/shuffle_order.hpp>
+#include <boost/random/sobol.hpp>
+#include <boost/random/taus88.hpp>
 #include <cstdlib>
+#include <fmt/base.h>
 #include <random>
 #include <range/v3/all.hpp>
 #include <range/v3/view/iota.hpp>
 #include <thread>
 #include <type_traits>
+
+#include <sobol_nd/sobol_nd.hpp>
 
 #include "problem.hpp"
 #include "util.hpp"
@@ -58,24 +71,46 @@ auto run_exps_impl(const auto &seeds, const auto &problems, Rngs rngs,
 int main() {
   try {
     constexpr auto REP{20};
-    const auto rngs =
-        std::tuple{rng_t<std::mt19937>{"mersenne-twister-19937"},
-                   rng_t<std::mt19937_64>{"mersenne-twister-19937-64"},
-                   rng_t<std::ranlux24_base>{"ranlux24_base"},
-                   rng_t<std::ranlux48_base>{"ranlux48_base"},
-                   rng_t<std::ranlux24>{"ranlux24"},
-                   rng_t<std::ranlux48>{"ranlux48"},
-                   rng_t<std::knuth_b>{"knuth_b"},
-                   rng_t<std::minstd_rand>{"minstd_rand"},
-                   rng_t<std::minstd_rand0>{"minstd_rand0"}};
+
+    const auto rngs = std::tuple{
+        rng_t<std::mt19937>{"mersenne-twister-19937"},
+        rng_t<std::mt19937_64>{"mersenne-twister-19937-64"},
+        rng_t<std::ranlux24_base>{"ranlux24_base"},
+        rng_t<std::ranlux48_base>{"ranlux48_base"},
+        rng_t<std::ranlux24>{"ranlux24"},
+        rng_t<std::ranlux48>{"ranlux48"},
+        rng_t<std::knuth_b>{"knuth_b"},
+        rng_t<std::minstd_rand>{"minstd_rand"},
+        rng_t<std::minstd_rand0>{"minstd_rand0"},
+        rng_t<std::minstd_rand0>{"minstd_rand0"},
+
+        rng_t<boost::random::mt19937>{"b_mersenne-twister-19937"},
+        rng_t<boost::random::mt19937_64>{"b_mersenne-twister-19937-64"},
+        rng_t<boost::random::minstd_rand>{"b_minstd_rand"},
+        rng_t<boost::random::minstd_rand0>{"b_minstd_rand0"},
+        rng_t<boost::random::rand48>{"b_rand48"},
+        rng_t<boost::random::ecuyer1988>{"b_ecuyer1988"},
+        rng_t<boost::random::kreutzer1986>{"b_kreutzer1986"},
+        rng_t<boost::random::taus88>{"b_taus88"},
+        rng_t<boost::random::hellekalek1995>{"b_hellekalek1995"},
+        rng_t<boost::random::mt11213b>{"b_mt11213b"},
+        rng_t<boost::random::lagged_fibonacci607>{"b_lagged_fibonacci607"},
+        rng_t<boost::random::lagged_fibonacci44497>{"b_lagged_fibonacci44497"},
+        rng_t<boost::random::ranlux3>{"b_ranlux3"},
+        rng_t<boost::random::ranlux64_3>{"ranlux64_3"},
+        rng_t<sobol_n<1>>{"b_sobol"},
+    };
     auto seeds = rv::closed_iota(1, REP);
 
     auto dim10 =
-        std::jthread{[&] { run_exps<10, REP>(seeds, OPTIM_PROBLEMS, rngs); }};
+        std::jthread{[&] { run_exps<10, REP>(seeds, OPTIM_PROBLEMS, rngs);
+        }};
     auto dim30 =
-        std::jthread{[&] { run_exps<30, REP>(seeds, OPTIM_PROBLEMS, rngs); }};
+        std::jthread{[&] { run_exps<30, REP>(seeds, OPTIM_PROBLEMS, rngs);
+        }};
     auto dim50 =
-        std::jthread{[&] { run_exps<50, REP>(seeds, OPTIM_PROBLEMS, rngs); }};
+        std::jthread{[&] { run_exps<50, REP>(seeds, OPTIM_PROBLEMS, rngs);
+        }};
 
   } catch (std::exception &e) {
     fmt::println("{}", e.what());
