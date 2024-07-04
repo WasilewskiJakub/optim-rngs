@@ -31,7 +31,7 @@ const auto rosenbrock =
       return val;
     });
 
-const auto ellips = optim_problem("ellips", [](const double *x, const int N) {
+const auto ellips = optim_problem("ellips", [](const double *x, const int N) -> double {
   double val = 0.0;
   for (int i = 1; i <= N; i++)
     val += std::pow(1e6, (i - 1) / (N - 1)) * x[i - 1] * x[i - 1];

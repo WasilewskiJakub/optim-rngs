@@ -82,7 +82,6 @@ int main() {
         rng_t<std::knuth_b>{"knuth_b"},
         rng_t<std::minstd_rand>{"minstd_rand"},
         rng_t<std::minstd_rand0>{"minstd_rand0"},
-        rng_t<std::minstd_rand0>{"minstd_rand0"},
 
         rng_t<boost::random::mt19937>{"b_mersenne-twister-19937"},
         rng_t<boost::random::mt19937_64>{"b_mersenne-twister-19937-64"},
@@ -97,7 +96,7 @@ int main() {
         rng_t<boost::random::lagged_fibonacci607>{"b_lagged_fibonacci607"},
         rng_t<boost::random::lagged_fibonacci44497>{"b_lagged_fibonacci44497"},
         rng_t<boost::random::ranlux3>{"b_ranlux3"},
-        rng_t<boost::random::ranlux64_3>{"ranlux64_3"},
+        rng_t<boost::random::ranlux64_3>{"b_ranlux64_3"},
         rng_t<sobol_n<1>>{"b_sobol"},
     };
     auto seeds = rv::closed_iota(1, REP);
