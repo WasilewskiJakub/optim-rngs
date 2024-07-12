@@ -56,7 +56,7 @@ mk_plot <- function(dfx, fn_name, dimx, selected_rngs) {
 }
 
 for(fn_name in OPTIM_PROBLEMS){
-  pdf(file = paste0(fn_name, "-plots.pdf"), width = 27, height = 16)
+  pdf(file = paste0(fn_name, "-plots.pdf"), width = 27, height = 20)
   for(dim in DIMENSIONS){
     print(mk_plot(AVG_DFR, fn_name, dim, RNGS))
   }
