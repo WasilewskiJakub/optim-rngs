@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/kuba/Pulpit/crm/optim-rngs/src",
+  "command": "/usr/bin/c++  -isystem /usr/include/eigen3 -std=gnu++20 -o CMakeFiles/main.dir/main.cpp.o -c /home/kuba/Pulpit/crm/optim-rngs/src/main.cpp",
+  "file": "/home/kuba/Pulpit/crm/optim-rngs/src/main.cpp",
+  "output": "src/CMakeFiles/main.dir/main.cpp.o"
+}
+]
