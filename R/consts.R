@@ -53,7 +53,7 @@ OPTIM_PROBLEMS <- c(
 
 DIMENSIONS <- c(
 10
-# ,30
+,30
 # ,50
 )
 

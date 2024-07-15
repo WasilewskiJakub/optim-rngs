@@ -1,5 +1,5 @@
-/home/kuba/Pulpit/crm/optim-rngs/CMakeFiles/edit_cache.dir
-/home/kuba/Pulpit/crm/optim-rngs/CMakeFiles/rebuild_cache.dir
-/home/kuba/Pulpit/crm/optim-rngs/src/CMakeFiles/main.dir
-/home/kuba/Pulpit/crm/optim-rngs/src/CMakeFiles/edit_cache.dir
-/home/kuba/Pulpit/crm/optim-rngs/src/CMakeFiles/rebuild_cache.dir
+/home/kuba/Desktop/wae_roz/optim-rngs/CMakeFiles/edit_cache.dir
+/home/kuba/Desktop/wae_roz/optim-rngs/CMakeFiles/rebuild_cache.dir
+/home/kuba/Desktop/wae_roz/optim-rngs/src/CMakeFiles/main.dir
+/home/kuba/Desktop/wae_roz/optim-rngs/src/CMakeFiles/edit_cache.dir
+/home/kuba/Desktop/wae_roz/optim-rngs/src/CMakeFiles/rebuild_cache.dir

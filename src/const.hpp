@@ -3,4 +3,4 @@
 #include <filesystem>
 
 const auto LOG_DIR =
-    std::filesystem::path{"/home/kuba/Pulpit/crm/optim-rngs/data"};
+    std::filesystem::path{"/home/kuba/Desktop/wae_roz/optim-rngs/data"};

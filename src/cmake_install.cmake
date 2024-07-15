@@ -1,4 +1,4 @@
-# Install script for directory: /home/kuba/Pulpit/crm/optim-rngs/src
+# Install script for directory: /home/kuba/Desktop/wae_roz/optim-rngs/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
